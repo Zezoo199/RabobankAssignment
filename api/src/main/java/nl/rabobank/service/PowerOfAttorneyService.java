@@ -1,6 +1,10 @@
 package nl.rabobank.service;
 
-import nl.rabobank.authorizations.PowerOfAttorney;
+import nl.rabobank.exception.AccountNotFoundException;
+import nl.rabobank.exception.GrantorDoesNotOwnAccountException;
+import nl.rabobank.exception.RoleAlreadyGrantedException;
+import nl.rabobank.model.AccessableAccountsDTO;
+import nl.rabobank.model.PowerOfAttorneyDTO;
 
 /**
  *
@@ -8,8 +12,17 @@ import nl.rabobank.authorizations.PowerOfAttorney;
 public interface PowerOfAttorneyService {
 
   /**
-   *
-   * @param powerOfAttorney
+   * @param powerOfAttorneyDTO inputDTO
+   * @throws AccountNotFoundException if account not found
+   * @throws GrantorDoesNotOwnAccountException if no rights for Grantor
+   * @throws RoleAlreadyGrantedException if role already exists
    */
-  void post(PowerOfAttorney powerOfAttorney);
+  void postPowerOfAttorney(PowerOfAttorneyDTO powerOfAttorneyDTO)
+      throws AccountNotFoundException, GrantorDoesNotOwnAccountException, RoleAlreadyGrantedException;
+
+  /**
+   * @param userName user name
+   * @return AccessableAccountsDTO with two lists for READ and WRITE
+   */
+  AccessableAccountsDTO getAccessibleAccountsForUser(String userName);
 }
