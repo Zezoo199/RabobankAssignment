@@ -65,10 +65,7 @@
     <groupId>nl.rabobank</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <!--
-  Below to upgrade surefire and failsafe plugins to
-   include both unit and Integration test in Install phase
-  !-->
+
   <properties>
     <springdoc.version>1.5.2</springdoc.version>
   </properties>
