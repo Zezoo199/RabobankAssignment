@@ -44,15 +44,18 @@ public class RaboAssignmentApplication {
   }
 
   @Bean
-  InitializingBean createIndex() {
-    log.info("Creating INDEX For Unique POA");
-    return () ->
-        mongoTemplate.indexOps(PowerOfAttorney.class).ensureIndex(
-            new Index().named("roleIndex_").
-                on("grantorName", Direction.ASC).
-                on("granteeName", Direction.ASC).
-                on("account", Direction.ASC).
-                on("authorization", Direction.ASC).unique());
+  InitializingBean createIndexes() {
+    log.info("Creating INDEX For Unique POA and AcNumber");
+    return () -> {
+      mongoTemplate.indexOps(PowerOfAttorney.class).ensureIndex(
+          new Index().named("roleIndex_").
+              on("grantorName", Direction.ASC).
+              on("granteeName", Direction.ASC).
+              on("account", Direction.ASC).
+              on("authorization", Direction.ASC).unique());
+      mongoTemplate.indexOps(Account.class)
+          .ensureIndex(new Index().named("acNumber_").on("accountNumber", Direction.ASC).unique());
+    };
   }
 
   private List<Account> givenAccounts() {
