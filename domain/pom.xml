@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>rabobank-assignment</artifactId>
-        <groupId>nl.rabobank</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>rabobank-assignment-domain</artifactId>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>rabobank-assignment-domain</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-data-mongodb</artifactId>
+      <groupId>org.springframework.data</groupId>
+      <scope>compile</scope>
+      <version>2.0.9.RELEASE</version>
+    </dependency>
+  </dependencies>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>rabobank-assignment</artifactId>
+    <groupId>nl.rabobank</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
 </project>
